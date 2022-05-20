@@ -21,7 +21,7 @@
       function getData() {
         const wallet = ethers.Wallet.createRandom();
         document.getElementById("address").innerText = "Address: " + wallet.address;
-        document.getElementById("privateKey").innerText = "Private Key: 0x" + wallet.privateKey;
+        document.getElementById("privateKey").innerText = "Private Key: " + wallet.privateKey;
         document.getElementById("mnemonic").innerText = "Mnemonic Phrase: " + wallet.mnemonic.phrase;
       }
     </script>

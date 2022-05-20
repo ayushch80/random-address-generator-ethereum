@@ -19,7 +19,7 @@
       import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
       document.getElementById("btn_click").addEventListener("click", getData);
       function getData() {
-        const wallet = ethers.Wallet.createRandom();
+        const wallet = ethers.Wallet.createRandom()
         document.getElementById("address").innerText = "Address: " + wallet.address;
         document.getElementById("privateKey").innerText = "Private Key: 0x" + wallet.privateKey;
         document.getElementById("mnemonic").innerText = "Mnemonic Phrase: " + wallet.mnemonic.phrase;

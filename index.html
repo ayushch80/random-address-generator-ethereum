@@ -16,7 +16,7 @@
       <div id="mnemonic"></div>
     </div>
     <script type="module">
-      import { ethers } from "ethers-5-2.js";
+      import { ethers } from "./ethers-5-2.js";
       document.getElementById("btn_click").addEventListener("click", getData);
       function getData() {
         const wallet = ethers.Wallet.createRandom();

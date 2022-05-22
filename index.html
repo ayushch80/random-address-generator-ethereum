@@ -8,7 +8,8 @@
   </head>
   <body>
      <form class="d-flex" id="generate" method="POST">
-      <button name="data" type="button" class="btn btn-primary" id="btn_click">Click to Generate</button>
+      <button name="data" type="button" class="btn btn-primary" id="btn_clickGenerate">Click to Generate</button>
+      <button name="data" type="button" class="btn btn-primary" id="btn_clickCSV">Get Data in CSV</button>
      </form>
     <div class="alert alert-secondary">
       <div id="address"></div>
@@ -17,12 +18,31 @@
     </div>
     <script type="module">
       import { ethers } from "./ethers-5-2.js";
-      document.getElementById("btn_click").addEventListener("click", getData);
+      document.getElementById("btn_clickGenerate").addEventListener("click", getData);
       function getData() {
+        document.getElementById("btn_clickCSV").addEventListener("click", download_csv_file);
         const wallet = ethers.Wallet.createRandom();
         document.getElementById("address").innerText = "Address: " + wallet.address;
         document.getElementById("privateKey").innerText = "Private Key: " + wallet.privateKey;
         document.getElementById("mnemonic").innerText = "Mnemonic Phrase: " + wallet.mnemonic.phrase;
+        var csvFileData = [  
+          ['ADDRESS', wallet.address],  
+          ['PRIVATE KEY', wallet.privateKey],  
+          ['MNEMONIC PHRASE', wallet.mnemonic.phrase] 
+        ];
+        function download_csv_file() {
+          var csv = 'STORE THIS FILE SAFELY\n';
+          csvFileData.forEach(function(row) {  
+            csv += row.join(',');  
+            csv += "\n";  
+          });
+          document.write(csv); 
+          var hiddenElement = document.createElement('a');  
+          hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);  
+          hiddenElement.target = '_blank';  
+          hiddenElement.download = 'wallet.csv';  
+          hiddenElement.click();  
+        }
       }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

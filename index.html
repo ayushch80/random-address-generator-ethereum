@@ -55,6 +55,7 @@
         }
         function download_pdf(){
           var doc = new jsPDF()
+          doc.setFontSize(16);
           doc.text(20, 20, 'ADDRESS: ' + wallet.address);
           doc.text(20, 30, 'PRIVATE KEY: ' + wallet.privateKey);
           doc.text(20, 40, 'MNEMONIC: ' + wallet.mnemonic.phrase);

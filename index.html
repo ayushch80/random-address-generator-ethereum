@@ -25,11 +25,10 @@
       
       
       function getData() {
-        
-        
+       
+        const wallet = ethers.Wallet.createRandom();
         document.getElementById("btn_clickCSV").addEventListener("click", download_csv);
         document.getElementById("btn_clickPDF").addEventListener("click", download_pdf);
-        const wallet = ethers.Wallet.createRandom();
         document.getElementById("address").innerText = "Address: " + wallet.address;
         document.getElementById("privateKey").innerText = "Private Key: " + wallet.privateKey;
         document.getElementById("mnemonic").innerText = "Mnemonic Phrase: " + wallet.mnemonic.phrase;
